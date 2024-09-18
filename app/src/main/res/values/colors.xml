@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="item_background">#F0F0F0</color>
+    <color name="primary_text">#000000</color>
+    <color name="secondary_text">#555555</color>
+    <color name="price_text">#FF5722</color>
 </resources>

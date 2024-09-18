@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">jv-fe-northcoders-record-shop</string>
+    <string name="record_icon">Record Icon</string>
 </resources>
