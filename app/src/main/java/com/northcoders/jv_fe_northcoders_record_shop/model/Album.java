@@ -3,15 +3,25 @@ package com.northcoders.jv_fe_northcoders_record_shop.model;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Album extends BaseObservable {
 
+    @SerializedName("id")
     private Long id;
+    @SerializedName("title")
     private String title;
+    @SerializedName("description")
     private String description;
+    @SerializedName("released")
     private int released;
+    @SerializedName("artist")
     private Artist artist;
+    @SerializedName("genre")
     private Genre genre;
+    @SerializedName("price")
     private float price;
+    @SerializedName("inStock")
     private int inStock;
 
     public Album() {
@@ -34,7 +44,7 @@ public class Album extends BaseObservable {
 
     public void setId(Long id) {
         this.id = id;
-        notifyPropertyChanged(BR.id); // notify data binding of the change
+//        notifyPropertyChanged(BR.id); // notify data binding of the change
     }
 
     @Bindable
@@ -44,7 +54,7 @@ public class Album extends BaseObservable {
 
     public void setTitle(String title) {
         this.title = title;
-        notifyPropertyChanged(BR.title); // notify data binding of the change
+//        notifyPropertyChanged(BR.title); // notify data binding of the change
     }
 
     @Bindable
@@ -54,7 +64,7 @@ public class Album extends BaseObservable {
 
     public void setDescription(String description) {
         this.description = description;
-        notifyPropertyChanged(BR.description); // notify data binding of the change
+//        notifyPropertyChanged(BR.description); // notify data binding of the change
     }
 
     @Bindable
@@ -64,7 +74,7 @@ public class Album extends BaseObservable {
 
     public void setReleased(int released) {
         this.released = released;
-        notifyPropertyChanged(BR.released); // notify data binding of the change
+//        notifyPropertyChanged(BR.released); // notify data binding of the change
     }
 
     @Bindable
@@ -74,7 +84,7 @@ public class Album extends BaseObservable {
 
     public void setArtist(Artist artist) {
         this.artist = artist;
-        notifyPropertyChanged(BR.artist); // notify data binding of the change
+//        notifyPropertyChanged(BR.artist); // notify data binding of the change
     }
 
     @Bindable
@@ -84,7 +94,7 @@ public class Album extends BaseObservable {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
-        notifyPropertyChanged(BR.genre); // notify data binding of the change
+//        notifyPropertyChanged(BR.genre); // notify data binding of the change
     }
 
     @Bindable
@@ -94,7 +104,7 @@ public class Album extends BaseObservable {
 
     public void setPrice(float price) {
         this.price = price;
-        notifyPropertyChanged(BR.price); // notify data binding of the change
+//        notifyPropertyChanged(BR.price); // notify data binding of the change
     }
 
     @Bindable
@@ -104,7 +114,7 @@ public class Album extends BaseObservable {
 
     public void setInStock(int inStock) {
         this.inStock = inStock;
-        notifyPropertyChanged(BR.inStock); // notify data binding of the change
+//        notifyPropertyChanged(BR.inStock); // notify data binding of the change
     }
 
 }
