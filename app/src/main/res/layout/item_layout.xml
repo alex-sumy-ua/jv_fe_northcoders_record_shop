@@ -21,49 +21,74 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/ic_record"
-            android:text="@{album.title}"
             android:contentDescription="@string/record_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Title -->
         <TextView
-            android:id="@+id/name_textView"
+            android:id="@+id/title_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{fruit.name}"
+            android:text="@{album.title}"
             android:textColor="@color/primary_text"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/description_textView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Artist -->
         <TextView
-            android:id="@+id/description_textView"
+            android:id="@+id/artist_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{fruit.family}"
+            android:text="@{album.artist.name}"
             android:textColor="@color/secondary_text"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/name_textView"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/title_textView"
             app:layout_constraintStart_toEndOf="@id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Genre -->
+        <TextView
+            android:id="@+id/genre_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{album.genre.descriptor}"
+            android:textColor="@color/secondary_text"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/artist_textView"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Price -->
         <TextView
             android:id="@+id/price_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{fruit.order}"
+            android:text='@{"$" + String.format("%.2f", album.price)}'
+            android:textColor="@color/price_text"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/genre_textView"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- In Stock -->
+        <TextView
+            android:id="@+id/inStock_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"In Stock: " + String.valueOf(album.inStock)}'
             android:textColor="@color/price_text"
             android:textSize="16sp"
             android:textStyle="italic"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@id/price_textView"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
