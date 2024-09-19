@@ -2,6 +2,7 @@ package com.northcoders.jv_fe_northcoders_record_shop.model;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -19,12 +20,14 @@ public class AlbumRepository {
 
     private final MutableLiveData<List<Album>> mutableLiveData = new MutableLiveData<>();
     private final AlbumApiService apiService;
+    private final Application application;
 
     public AlbumRepository(Application application) {
         // Initialize the API service
         apiService = RetrofitInstance.getService();
         // Fetch data initially
         fetchAlbums();
+        this.application = application;
     }
 
     public LiveData<List<Album>> getAllAlbums() {
@@ -53,4 +56,28 @@ public class AlbumRepository {
             }
         });
     }
+
+    public void addAlbum (Album album) {
+
+        Call<Album> call = apiService.addAlbum(album);
+
+        call.enqueue(new Callback<Album>() {
+            @Override
+            public void onResponse(Call<Album> call, Response<Album> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(application.getApplicationContext(), "Album added successfully!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(application.getApplicationContext(), "Failed to add album. Please try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Album> call, Throwable t) {
+                Toast.makeText(application.getApplicationContext(), "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
 }
