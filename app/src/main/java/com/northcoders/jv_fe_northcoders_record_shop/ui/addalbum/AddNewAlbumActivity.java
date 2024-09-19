@@ -2,18 +2,19 @@ package com.northcoders.jv_fe_northcoders_record_shop.ui.addalbum;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
+
 import com.northcoders.jv_fe_northcoders_record_shop.R;
 import com.northcoders.jv_fe_northcoders_record_shop.databinding.ActivityAddNewAlbumBinding;
 import com.northcoders.jv_fe_northcoders_record_shop.model.Album;
 import com.northcoders.jv_fe_northcoders_record_shop.ui.mainactivity.MainActivityViewModel;
-
 
 public class AddNewAlbumActivity extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
-        // Use DataBindingUtil to set the content view
+        // Initialize data binding
         ActivityAddNewAlbumBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
         // Initialize the Album object and set it to the binding
@@ -39,7 +40,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         addAlbumClickHandlers = new AddAlbumClickHandlers(album, this, viewModel);
         binding.setAddAlbumClickHandlers(addAlbumClickHandlers);
 
-        // Continue with setting the window insets
+        // Set up window insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
