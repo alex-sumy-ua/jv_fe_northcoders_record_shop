@@ -21,6 +21,12 @@ public class AddAlbumClickHandlers {
         this.viewModel = viewModel;
     }
 
+    public void onAddAlbumClick(View view) {
+        // Logic for adding the album
+        Toast.makeText(context, "Album added: " + album.getTitle(), Toast.LENGTH_SHORT).show();
+        // Additional logic can be added here if needed
+    }
+
     public void onSubmitButton(View view) {
         // Check if any fields are empty
         if (album.getTitle() == null || album.getTitle().isEmpty() ||

@@ -14,11 +14,11 @@ import com.northcoders.jv_fe_northcoders_record_shop.databinding.ActivityAddNewA
 import com.northcoders.jv_fe_northcoders_record_shop.model.Album;
 import com.northcoders.jv_fe_northcoders_record_shop.ui.mainactivity.MainActivityViewModel;
 
+
 public class AddNewAlbumActivity extends AppCompatActivity {
 
-    private ActivityAddNewAlbumBinding binding;
-    private MainActivityViewModel viewModel; // Initialize your ViewModel
-    private AddAlbumClickHandlers clickHandlers;
+    private MainActivityViewModel viewModel;
+    private AddAlbumClickHandlers addAlbumClickHandlers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,27 +26,21 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
 
         // Use DataBindingUtil to set the content view
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
+        ActivityAddNewAlbumBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
         // Initialize the Album object and set it to the binding
         Album album = new Album();
         binding.setAlbum(album);
 
-        // Initialize your ViewModel here (adjust as needed)
-        viewModel = new MainActivityViewModel(getApplication()); // Replace with actual ViewModel initialization
+        // Initialize the ViewModel
+        viewModel = new MainActivityViewModel(getApplication());
 
-        // Initialize click handlers
-        clickHandlers = new AddAlbumClickHandlers(album, this, viewModel);
-
-        // Set button click listeners
-        Button buttonSubmit = binding.buttonSubmit; // Reference the button using binding
-        buttonSubmit.setOnClickListener(clickHandlers::onSubmitButton);
-
-        // Set up FAB click listener
-        binding.fabBack.setOnClickListener(clickHandlers::onFabBack);
+        // Initialize the click handlers and set it to the binding
+        addAlbumClickHandlers = new AddAlbumClickHandlers(album, this, viewModel);
+        binding.setAddAlbumClickHandlers(addAlbumClickHandlers);
 
         // Continue with setting the window insets
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
