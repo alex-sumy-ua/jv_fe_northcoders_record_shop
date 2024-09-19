@@ -1,10 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.addalbum.AddNewAlbumActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="album"
+            type="com.northcoders.jv_fe_northcoders_record_shop.model.Album" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".ui.addalbum.AddNewAlbumActivity">
+
+        <!-- Album Title -->
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Album Title"
+            android:text="@={album.title}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Album Description -->
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:text="@={album.description}"
+            app:layout_constraintTop_toBottomOf="@id/editTextTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Album Release Year -->
+        <EditText
+            android:id="@+id/editTextYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Release Year"
+            android:inputType="number"
+            android:text="@={album.released}"
+            app:layout_constraintTop_toBottomOf="@id/editTextDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Artist Name -->
+        <EditText
+            android:id="@+id/editTextArtist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Artist Name"
+            android:text="@={album.artist.name}"
+            app:layout_constraintTop_toBottomOf="@id/editTextYear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Artist Role -->
+        <EditText
+            android:id="@+id/editTextRole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Artist Role"
+            android:text="@={album.artist.role}"
+            app:layout_constraintTop_toBottomOf="@id/editTextArtist"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Genre Dropdown (or text input) -->
+        <EditText
+            android:id="@+id/editTextGenre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Genre"
+            android:text="@={album.genre.descriptor}"
+            app:layout_constraintTop_toBottomOf="@id/editTextRole"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Price -->
+        <EditText
+            android:id="@+id/editTextPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Price"
+            android:inputType="numberDecimal"
+            android:text="@={album.price}"
+            app:layout_constraintTop_toBottomOf="@id/editTextGenre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- In Stock -->
+        <EditText
+            android:id="@+id/editTextStock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="In Stock"
+            android:inputType="number"
+            android:text="@={album.inStock}"
+            app:layout_constraintTop_toBottomOf="@id/editTextPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Add Album Button -->
+        <Button
+            android:id="@+id/buttonAddAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Album"
+            app:layout_constraintTop_toBottomOf="@id/editTextStock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
