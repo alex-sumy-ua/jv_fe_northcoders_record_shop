@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil;
 import com.northcoders.jv_fe_northcoders_record_shop.R;
 import com.northcoders.jv_fe_northcoders_record_shop.databinding.ActivityMainBinding;
 import com.northcoders.jv_fe_northcoders_record_shop.model.Album;
+import com.northcoders.jv_fe_northcoders_record_shop.model.Artist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ArrayList<Artist> artists = new ArrayList<>();
     private ArrayList<Album> albums = new ArrayList<>();
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel viewModel;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Call method to fetch and observe album data
         getAllAlbums();
+//        getAllArtists();
 
         // Edge-to-Edge setup using standard Android functionality
         ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
@@ -60,6 +63,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void getAllArtists() {
+//        viewModel.getAllArtists().observe(this, new Observer<List<Artist>>() {
+//            @Override
+//            public void onChanged(List<Artist> artistsFromLiveData) {
+//                // Cast the LiveData list to ArrayList
+//                artists = new ArrayList<>(artistsFromLiveData);
+//
+//                // Display albums in the RecyclerView
+//                displayInRecyclerView();
+//            }
+//        });
+//    }
 
     private void displayInRecyclerView() {
         // Assign RecyclerView from binding
